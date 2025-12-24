@@ -1,0 +1,2533 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بەرنامەی ئیسلامی - قورئان و فەرموودە</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        /* هەمان CSS-style لە کۆدی پێشوودا - تەواو کاردەکات */
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --primary-light: #d1fae5;
+            --secondary: #7c3aed;
+            --secondary-dark: #5b21b6;
+            --light: #ffffff;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --light-gray: #f9fafb;
+            --dark-gray: #374151;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --danger: #dc2626;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        .dark-mode {
+            --light: #111827;
+            --dark: #f9fafb;
+            --gray: #9ca3af;
+            --light-gray: #1f2937;
+            --dark-gray: #374151;
+            --card-bg: #1f2937;
+            --text: #f9fafb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --danger: #ef4444;
+            --success: #34d399;
+            --warning: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            transition: var(--transition);
+            line-height: 1.6;
+            padding-bottom: 90px;
+            min-height: 100vh;
+        }
+
+        .arabic-font {
+            font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+            font-size: 1.1em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* هێدەر */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 24px 16px;
+            border-radius: 0 0 20px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" font-size="80" text-anchor="middle" dy=".3em" fill="rgba(255,255,255,0.05)">﷽</text></svg>');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .header p {
+            opacity: 0.9;
+            position: relative;
+        }
+
+        /* تەبەکان */
+        .tabs {
+            display: flex;
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+            min-width: 80px;
+        }
+
+        .tab.active {
+            background-color: var(--card-bg);
+            color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .tab i {
+            font-size: 1.2rem;
+        }
+
+        /* کاردەکان */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+        }
+
+        .card-title i {
+            color: var(--primary);
+        }
+
+        /* کاتی بانگ */
+        .prayer-times {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .prayer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .prayer-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .prayer-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .prayer-time {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        /* کات و بەروار */
+        .time-display {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .time {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-family: monospace;
+        }
+
+        .date {
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+
+        /* زیکر */
+        .dhikr-counter {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dhikr-counter::before {
+            content: "﷽";
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            font-size: 8rem;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .dhikr-count {
+            font-size: 5rem;
+            font-weight: 700;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .dhikr-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .dhikr-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .dhikr-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* لیستی سورەتەکان */
+        .surah-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+
+        .surah-item {
+            display: flex;
+            align-items: center;
+            padding: 18px;
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-right: 4px solid var(--primary);
+        }
+
+        .surah-item:hover {
+            transform: translateY(-3px);
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .surah-item:hover .surah-details,
+        .surah-item:hover .surah-number {
+            color: white;
+        }
+
+        .surah-number {
+            background-color: var(--primary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-left: 16px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .surah-info {
+            flex: 1;
+        }
+
+        .surah-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .surah-name-arabic {
+            font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .surah-details {
+            display: flex;
+            gap: 12px;
+            margin-top: 4px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            flex-wrap: wrap;
+        }
+
+        /* سورەتە هەڵبژێردراوە */
+        .surah-detail-view {
+            text-align: center;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            cursor: pointer;
+            width: fit-content;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background-color: var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .surah-name-large {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--primary);
+        }
+
+        .surah-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background-color: var(--light-gray);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .surah-info-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(5, 150, 105, 0.1) 100%);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 25px;
+            text-align: right;
+            line-height: 1.8;
+        }
+
+        /* حەدیسەکان */
+        .hadith-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            max-height: 700px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+
+        .hadith-item {
+            background-color: var(--light-gray);
+            padding: 24px;
+            border-radius: 16px;
+            border-right: 5px solid var(--secondary);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .hadith-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hadith-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .hadith-text-arabic {
+            font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .hadith-source {
+            color: var(--secondary);
+            font-weight: 600;
+            font-style: italic;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* فێرکاری نوێژ */
+        .prayer-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            transform: translateX(-5px);
+        }
+
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .step-text {
+            flex: 1;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* پەنجەرەی تاریک/ڕووناک */
+        .theme-toggle {
+            position: fixed;
+            bottom: 90px;
+            left: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* تۆمارکردن و گەڕان */
+        .search-box {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 2px solid var(--light-gray);
+            background-color: var(--card-bg);
+            color: var(--text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: 50px;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* نوێکاریەکان */
+        .new-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* پێشەکی */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+
+        /* ژماردنەوە */
+        .counter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        /* بۆ مۆبایل باشتر */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .time {
+                font-size: 2.2rem;
+            }
+            
+            .dhikr-count {
+                font-size: 3.5rem;
+            }
+            
+            .tab {
+                padding: 10px;
+                min-width: 70px;
+                font-size: 0.9rem;
+            }
+            
+            .surah-list, .hadith-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .surah-name-large {
+                font-size: 2rem;
+            }
+            
+            .surah-name-arabic {
+                font-size: 1.6rem;
+            }
+            
+            .theme-toggle {
+                bottom: 80px;
+                left: 15px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            
+            .time {
+                font-size: 1.8rem;
+            }
+            
+            .dhikr-count {
+                font-size: 3rem;
+            }
+            
+            .dhikr-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .tab {
+                min-width: 60px;
+                padding: 8px 4px;
+                font-size: 0.8rem;
+            }
+            
+            .card-title {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ئەنیمەیشنەکان */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 0.5s ease;
+        }
+
+        /* بەشی زیادکراوەکان */
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .ayah-item {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            border-right: 4px solid var(--primary-light);
+        }
+
+        .ayah-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        .bookmark-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--warning);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .bookmark-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .settings-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .settings-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-action-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .floating-action-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--gray);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>بەرنامەی ئیسلامی - قورئان و فەرموودە</h1>
+        <p>تەواوی ١١٤ سورەتی قورئان + ٢٠٠ فەرموودە بە عەرەبی و کوردی</p>
+    </div>
+
+    <div class="container">
+        <!-- تەبەکان -->
+        <div class="tabs">
+            <div class="tab active" data-tab="home">
+                <i class="fas fa-home"></i>
+                <span>سەرەکی</span>
+            </div>
+            <div class="tab" data-tab="quran">
+                <i class="fas fa-book-quran"></i>
+                <span>قورئان</span>
+                <span class="counter">114</span>
+            </div>
+            <div class="tab" data-tab="hadith">
+                <i class="fas fa-quote-right"></i>
+                <span>فەرموودە</span>
+                <span class="counter">200</span>
+            </div>
+            <div class="tab" data-tab="dhikr">
+                <i class="fas fa-dharmachakra"></i>
+                <span>زیکر</span>
+            </div>
+            <div class="tab" data-tab="prayer">
+                <i class="fas fa-pray"></i>
+                <span>نوێژ</span>
+            </div>
+            <div class="tab" data-tab="new">
+                <i class="fas fa-star"></i>
+                <span>نوێکاریەکان</span>
+            </div>
+            <div class="tab" data-tab="settings">
+                <i class="fas fa-cog"></i>
+                <span>ڕێکخستنەکان</span>
+            </div>
+        </div>
+
+        <!-- گەڕان -->
+        <div id="searchContainer" style="display: none;">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="گەڕان بە ناوی سورەت یان ژمارە...">
+            </div>
+            
+            <div class="filter-buttons" id="filterButtons" style="display: none;">
+                <button class="filter-btn active" data-filter="all">هەموو</button>
+                <button class="filter-btn" data-filter="makkah">مەککی</button>
+                <button class="filter-btn" data-filter="madanah">مەدەنی</button>
+                <button class="filter-btn" data-filter="bookmarked">نیشاندارەکان</button>
+            </div>
+        </div>
+
+        <!-- ناوەڕۆک -->
+        <div id="content">
+            <!-- ناوەڕۆک لە JS دا پڕدەکرێتەوە -->
+        </div>
+
+        <!-- نوێکاریەکان -->
+        <div class="new-features" id="newFeatures" style="display: none;">
+            <!-- لە JS دا پڕدەکرێتەوە -->
+        </div>
+    </div>
+
+    <!-- پەنجەرەی تاریک/ڕووناک -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- دوگمەی کرداری سەرەڕای سوڕاو -->
+    <div class="floating-action-btn" id="fab">
+        <i class="fas fa-plus"></i>
+    </div>
+
+    <!-- پەنجەرەی ڕێکخستنەکان -->
+    <div class="settings-panel" id="settingsPanel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3>ڕێکخستنەکان</h3>
+            <button id="closeSettings" style="background: none; border: none; font-size: 1.5rem; color: var(--gray); cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="settings-option">
+            <span>دەنگی ئاگادارکردنەوە</span>
+            <label class="switch">
+                <input type="checkbox" id="notificationSound">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <div class="settings-option">
+            <span>ئاگادارکردنەوەی بانگ</span>
+            <label class="switch">
+                <input type="checkbox" id="prayerNotifications">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <div class="settings-option">
+            <span>فۆنتی گەورە</span>
+            <label class="switch">
+                <input type="checkbox" id="largeFont">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <div class="settings-option">
+            <span>زمان</span>
+            <select id="languageSelect" style="padding: 5px 10px; border-radius: 8px; background-color: var(--light-gray); color: var(--text); border: 1px solid var(--gray);">
+                <option value="ku">کوردی</option>
+                <option value="ar">عەرەبی</option>
+            </select>
+        </div>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--light-gray);">
+            <h4>زانیاری بەرنامە</h4>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--gray);">
+                وەشان: 2.0.0<br>
+                دروستکەر: بەرنامەی ئیسلامی<br>
+                مافی لەبەرگرتنەوە: 2024
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        // داتاکانی سورەتەکان (تەواوی ١١٤ سورەت)
+        const allSurahs = [
+            { num: 1, name: "الفاتحة", nameKu: "فاتحە", ayahs: 7, type: "مەککی", revelationOrder: 5, meaning: "کردنەوە", juz: 1, pages: "1-1", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3" },
+            { num: 2, name: "البقرة", nameKu: "بەقەرە", ayahs: 286, type: "مەدەنی", revelationOrder: 87, meaning: "مانگا", juz: [1,2,3], pages: "2-49", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/2.mp3" },
+            { num: 3, name: "آل عمران", nameKu: "ئالی عیمران", ayahs: 200, type: "مەدەنی", revelationOrder: 89, meaning: "خێزانی عیمران", juz: [3,4], pages: "50-76", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/3.mp3" },
+            { num: 4, name: "النساء", nameKu: "نسا", ayahs: 176, type: "مەدەنی", revelationOrder: 92, meaning: "ژنان", juz: [4,5,6], pages: "77-106", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/4.mp3" },
+            { num: 5, name: "المائدة", nameKu: "مائدە", ayahs: 120, type: "مەدەنی", revelationOrder: 112, meaning: "سەفرە", juz: [6,7], pages: "106-127", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/5.mp3" },
+            { num: 6, name: "الأنعام", nameKu: "ئەنعام", ayahs: 165, type: "مەککی", revelationOrder: 55, meaning: "ئاژەڵان", juz: [7,8], pages: "128-150", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6.mp3" },
+            { num: 7, name: "الأعراف", nameKu: "ئەعراف", ayahs: 206, type: "مەککی", revelationOrder: 39, meaning: "هێڵی سنور", juz: [8,9], pages: "151-176", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/7.mp3" },
+            { num: 8, name: "الأنفال", nameKu: "ئەنفال", ayahs: 75, type: "مەدەنی", revelationOrder: 88, meaning: "دۆڵەمەندێتی جەنگ", juz: [9,10], pages: "176-186", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/8.mp3" },
+            { num: 9, name: "التوبة", nameKu: "تەوبە", ayahs: 129, type: "مەدەنی", revelationOrder: 113, meaning: "تۆبە", juz: [10,11], pages: "187-207", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/9.mp3" },
+            { num: 10, name: "يونس", nameKu: "یونس", ayahs: 109, type: "مەککی", revelationOrder: 51, meaning: "یونس", juz: [11], pages: "208-221", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/10.mp3" },
+            { num: 11, name: "هود", nameKu: "هود", ayahs: 123, type: "مەککی", revelationOrder: 52, meaning: "هود", juz: [11,12], pages: "221-235", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/11.mp3" },
+            { num: 12, name: "يوسف", nameKu: "یوسف", ayahs: 111, type: "مەککی", revelationOrder: 53, meaning: "یوسف", juz: [12,13], pages: "235-248", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/12.mp3" },
+            { num: 13, name: "الرعد", nameKu: "ڕەعد", ayahs: 43, type: "مەدەنی", revelationOrder: 96, meaning: "تۆپەڵە", juz: [13], pages: "249-255", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/13.mp3" },
+            { num: 14, name: "إبراهيم", nameKu: "ئیبراهیم", ayahs: 52, type: "مەککی", revelationOrder: 72, meaning: "ئیبراهیم", juz: [13], pages: "255-261", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/14.mp3" },
+            { num: 15, name: "الحجر", nameKu: "حیجر", ayahs: 99, type: "مەککی", revelationOrder: 54, meaning: "بەردستان", juz: [14], pages: "262-267", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/15.mp3" },
+            { num: 16, name: "النحل", nameKu: "نەحل", ayahs: 128, type: "مەککی", revelationOrder: 70, meaning: "هەنگ", juz: [14], pages: "267-281", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/16.mp3" },
+            { num: 17, name: "الإسراء", nameKu: "ئیسرا", ayahs: 111, type: "مەککی", revelationOrder: 50, meaning: "شەوەڕۆ", juz: [15], pages: "282-293", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/17.mp3" },
+            { num: 18, name: "الكهف", nameKu: "کەهف", ayahs: 110, type: "مەککی", revelationOrder: 69, meaning: "ئەشکەوت", juz: [15,16], pages: "293-304", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/18.mp3" },
+            { num: 19, name: "مريم", nameKu: "مەریەم", ayahs: 98, type: "مەککی", revelationOrder: 44, meaning: "مەریەم", juz: [16], pages: "305-312", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/19.mp3" },
+            { num: 20, name: "طه", nameKu: "طاها", ayahs: 135, type: "مەککی", revelationOrder: 45, meaning: "طاها", juz: [16], pages: "312-321", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/20.mp3" },
+            { num: 21, name: "الأنبياء", nameKu: "ئەنبیا", ayahs: 112, type: "مەککی", revelationOrder: 73, meaning: "پێغەمبەران", juz: [17], pages: "322-331", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/21.mp3" },
+            { num: 22, name: "الحج", nameKu: "حەج", ayahs: 78, type: "مەدەنی", revelationOrder: 103, meaning: "حەج", juz: [17], pages: "332-341", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/22.mp3" },
+            { num: 23, name: "المؤمنون", nameKu: "موومنون", ayahs: 118, type: "مەککی", revelationOrder: 74, meaning: "باوەڕدارەکان", juz: [18], pages: "342-349", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/23.mp3" },
+            { num: 24, name: "النور", nameKu: "نور", ayahs: 64, type: "مەدەنی", revelationOrder: 102, meaning: "ڕووناکی", juz: [18], pages: "350-359", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/24.mp3" },
+            { num: 25, name: "الفرقان", nameKu: "فورقان", ayahs: 77, type: "مەککی", revelationOrder: 42, meaning: "جیاکەرەوە", juz: [18,19], pages: "359-366", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/25.mp3" },
+            { num: 26, name: "الشعراء", nameKu: "شوعەرا", ayahs: 227, type: "مەککی", revelationOrder: 47, meaning: "شاعیران", juz: [19], pages: "367-376", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/26.mp3" },
+            { num: 27, name: "النمل", nameKu: "نەمل", ayahs: 93, type: "مەککی", revelationOrder: 48, meaning: "مێروولە", juz: [19,20], pages: "377-385", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/27.mp3" },
+            { num: 28, name: "القصص", nameKu: "قەسەس", ayahs: 88, type: "مەککی", revelationOrder: 49, meaning: "چیرۆک", juz: [20], pages: "385-396", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/28.mp3" },
+            { num: 29, name: "العنكبوت", nameKu: "عەنکەبوت", ayahs: 69, type: "مەککی", revelationOrder: 85, meaning: "جاڵجاڵۆکە", juz: [20,21], pages: "396-404", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/29.mp3" },
+            { num: 30, name: "الروم", nameKu: "ڕۆم", ayahs: 60, type: "مەککی", revelationOrder: 84, meaning: "ڕۆم", juz: [21], pages: "404-410", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/30.mp3" },
+            { num: 31, name: "لقمان", nameKu: "لوقمان", ayahs: 34, type: "مەککی", revelationOrder: 57, meaning: "لقمان", juz: [21], pages: "411-414", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/31.mp3" },
+            { num: 32, name: "السجدة", nameKu: "سەجدە", ayahs: 30, type: "مەککی", revelationOrder: 75, meaning: "سجدە", juz: [21], pages: "415-417", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/32.mp3" },
+            { num: 33, name: "الأحزاب", nameKu: "ئەحزاب", ayahs: 73, type: "مەدەنی", revelationOrder: 90, meaning: "هاوپەیمانەکان", juz: [21,22], pages: "418-427", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/33.mp3" },
+            { num: 34, name: "سبإ", nameKu: "سەبە", ayahs: 54, type: "مەککی", revelationOrder: 58, meaning: "سەبە", juz: [22], pages: "428-434", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/34.mp3" },
+            { num: 35, name: "فاطر", nameKu: "فاطر", ayahs: 45, type: "مەککی", revelationOrder: 43, meaning: "دروستکەر", juz: [22], pages: "434-440", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/35.mp3" },
+            { num: 36, name: "يس", nameKu: "یاسین", ayahs: 83, type: "مەککی", revelationOrder: 41, meaning: "یاسین", juz: [22,23], pages: "440-445", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/36.mp3" },
+            { num: 37, name: "الصافات", nameKu: "صافات", ayahs: 182, type: "مەککی", revelationOrder: 56, meaning: "ڕێزلێنراوەکان", juz: [23], pages: "446-452", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/37.mp3" },
+            { num: 38, name: "ص", nameKu: "صاد", ayahs: 88, type: "مەککی", revelationOrder: 38, meaning: "صاد", juz: [23], pages: "453-458", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/38.mp3" },
+            { num: 39, name: "الزمر", nameKu: "زومەر", ayahs: 75, type: "مەککی", revelationOrder: 59, meaning: "کۆمەڵ", juz: [23,24], pages: "458-467", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/39.mp3" },
+            { num: 40, name: "غافر", nameKu: "غافر", ayahs: 85, type: "مەککی", revelationOrder: 60, meaning: "لێخۆشبوو", juz: [24], pages: "467-476", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/40.mp3" },
+            { num: 41, name: "فصلت", nameKu: "فوسیلەت", ayahs: 54, type: "مەککی", revelationOrder: 61, meaning: "ڕوونکراوەکان", juz: [24,25], pages: "476-482", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/41.mp3" },
+            { num: 42, name: "الشورى", nameKu: "شۆرا", ayahs: 53, type: "مەککی", revelationOrder: 62, meaning: "ئامۆژگاری", juz: [25], pages: "483-489", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/42.mp3" },
+            { num: 43, name: "الزخرف", nameKu: "زۆخروف", ayahs: 89, type: "مەککی", revelationOrder: 63, meaning: "زیو", juz: [25], pages: "489-495", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/43.mp3" },
+            { num: 44, name: "الدخان", nameKu: "دوخان", ayahs: 59, type: "مەککی", revelationOrder: 64, meaning: "دووکەڵ", juz: [25], pages: "496-498", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/44.mp3" },
+            { num: 45, name: "الجاثية", nameKu: "جاسە", ayahs: 37, type: "مەککی", revelationOrder: 65, meaning: "چۆڵاوەکان", juz: [25], pages: "499-502", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/45.mp3" },
+            { num: 46, name: "الأحقاف", nameKu: "ئەحقاف", ayahs: 35, type: "مەککی", revelationOrder: 66, meaning: "گردی قوم", juz: [26], pages: "502-506", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/46.mp3" },
+            { num: 47, name: "محمد", nameKu: "مەحەممەد", ayahs: 38, type: "مەدەنی", revelationOrder: 95, meaning: "مەحەممەد", juz: [26], pages: "507-510", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/47.mp3" },
+            { num: 48, name: "الفتح", nameKu: "فەتح", ayahs: 29, type: "مەدەنی", revelationOrder: 111, meaning: "سەرکەوتن", juz: [26], pages: "511-515", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/48.mp3" },
+            { num: 49, name: "الحجرات", nameKu: "حوجورات", ayahs: 18, type: "مەدەنی", revelationOrder: 106, meaning: "ژوورەکان", juz: [26], pages: "515-517", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/49.mp3" },
+            { num: 50, name: "ق", nameKu: "قاف", ayahs: 45, type: "مەککی", revelationOrder: 34, meaning: "قاف", juz: [26], pages: "518-520", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/50.mp3" },
+            { num: 51, name: "الذاريات", nameKu: "زارعات", ayahs: 60, type: "مەککی", revelationOrder: 67, meaning: "فڕێدەرەکان", juz: [26,27], pages: "520-523", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/51.mp3" },
+            { num: 52, name: "الطور", nameKu: "توور", ayahs: 49, type: "مەککی", revelationOrder: 76, meaning: "گرد", juz: [27], pages: "523-525", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/52.mp3" },
+            { num: 53, name: "النجم", nameKu: "نەجم", ayahs: 62, type: "مەککی", revelationOrder: 23, meaning: "ئەستێرە", juz: [27], pages: "526-528", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/53.mp3" },
+            { num: 54, name: "القمر", nameKu: "قەمەر", ayahs: 55, type: "مەککی", revelationOrder: 37, meaning: "مانگ", juz: [27], pages: "528-531", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/54.mp3" },
+            { num: 55, name: "الرحمن", nameKu: "ڕەحمان", ayahs: 78, type: "مەدەنی", revelationOrder: 97, meaning: "میهرەبان", juz: [27], pages: "531-534", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/55.mp3" },
+            { num: 56, name: "الواقعة", nameKu: "واقعه", ayahs: 96, type: "مەککی", revelationOrder: 46, meaning: "ڕووداو", juz: [27], pages: "534-537", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/56.mp3" },
+            { num: 57, name: "الحديد", nameKu: "حەدید", ayahs: 29, type: "مەدەنی", revelationOrder: 94, meaning: "ئاسن", juz: [27], pages: "537-541", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/57.mp3" },
+            { num: 58, name: "المجادلة", nameKu: "موجادەلە", ayahs: 22, type: "مەدەنی", revelationOrder: 105, meaning: "گفتوگۆ", juz: [28], pages: "542-545", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/58.mp3" },
+            { num: 59, name: "الحشر", nameKu: "حەشر", ayahs: 24, type: "مەدەنی", revelationOrder: 101, meaning: "کۆبوونەوە", juz: [28], pages: "545-548", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/59.mp3" },
+            { num: 60, name: "الممتحنة", nameKu: "مومتحەنە", ayahs: 13, type: "مەدەنی", revelationOrder: 91, meaning: "پشکنین", juz: [28], pages: "549-550", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/60.mp3" },
+            { num: 61, name: "الصف", nameKu: "سەف", ayahs: 14, type: "مەدەنی", revelationOrder: 109, meaning: "ڕیز", juz: [28], pages: "551-552", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/61.mp3" },
+            { num: 62, name: "الجمعة", nameKu: "جومعە", ayahs: 11, type: "مەدەنی", revelationOrder: 110, meaning: "هەینی", juz: [28], pages: "553-554", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/62.mp3" },
+            { num: 63, name: "المنافقون", nameKu: "مونافقون", ayahs: 11, type: "مەدەنی", revelationOrder: 104, meaning: "دووڕووەکان", juz: [28], pages: "554-555", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/63.mp3" },
+            { num: 64, name: "التغابن", nameKu: "تەغابون", ayahs: 18, type: "مەدەنی", revelationOrder: 108, meaning: "گومان", juz: [28], pages: "556-557", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/64.mp3" },
+            { num: 65, name: "الطلاق", nameKu: "تەلاق", ayahs: 12, type: "مەدەنی", revelationOrder: 99, meaning: "تەلاق", juz: [28], pages: "558-559", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/65.mp3" },
+            { num: 66, name: "التحريم", nameKu: "تەحریم", ayahs: 12, type: "مەدەنی", revelationOrder: 107, meaning: "قەدەغە", juz: [28], pages: "560-561", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/66.mp3" },
+            { num: 67, name: "الملك", nameKu: "مولک", ayahs: 30, type: "مەککی", revelationOrder: 77, meaning: "پاشایەتی", juz: [29], pages: "562-564", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/67.mp3" },
+            { num: 68, name: "القلم", nameKu: "قەلەم", ayahs: 52, type: "مەککی", revelationOrder: 2, meaning: "قەڵەم", juz: [29], pages: "564-566", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/68.mp3" },
+            { num: 69, name: "الحاقة", nameKu: "حاقە", ayahs: 52, type: "مەککی", revelationOrder: 78, meaning: "ڕاستەقینە", juz: [29], pages: "566-568", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/69.mp3" },
+            { num: 70, name: "المعارج", nameKu: "مەعاریج", ayahs: 44, type: "مەککی", revelationOrder: 79, meaning: "پلەکان", juz: [29], pages: "568-570", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/70.mp3" },
+            { num: 71, name: "نوح", nameKu: "نوح", ayahs: 28, type: "مەککی", revelationOrder: 71, meaning: "نوح", juz: [29], pages: "570-571", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/71.mp3" },
+            { num: 72, name: "الجن", nameKu: "جن", ayahs: 28, type: "مەککی", revelationOrder: 40, meaning: "جن", juz: [29], pages: "572-573", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/72.mp3" },
+            { num: 73, name: "المزمل", nameKu: "موزەمیل", ayahs: 20, type: "مەککی", revelationOrder: 3, meaning: "پێچاڵە", juz: [29], pages: "574-575", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/73.mp3" },
+            { num: 74, name: "المدثر", nameKu: "مودەسسیر", ayahs: 56, type: "مەککی", revelationOrder: 4, meaning: "پۆشاو", juz: [29], pages: "575-577", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/74.mp3" },
+            { num: 75, name: "القيامة", nameKu: "قیامە", ayahs: 40, type: "مەککی", revelationOrder: 31, meaning: "قیامەت", juz: [29], pages: "577-578", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/75.mp3" },
+            { num: 76, name: "الإنسان", nameKu: "ئینسان", ayahs: 31, type: "مەدەنی", revelationOrder: 98, meaning: "مرۆڤ", juz: [29], pages: "578-580", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/76.mp3" },
+            { num: 77, name: "المرسلات", nameKu: "مورسەلات", ayahs: 50, type: "مەککی", revelationOrder: 33, meaning: "نێردراوەکان", juz: [29], pages: "580-581", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/77.mp3" },
+            { num: 78, name: "النبإ", nameKu: "نەبا", ayahs: 40, type: "مەککی", revelationOrder: 80, meaning: "هەواڵ", juz: [30], pages: "582-583", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/78.mp3" },
+            { num: 79, name: "النازعات", nameKu: "نازعات", ayahs: 46, type: "مەککی", revelationOrder: 81, meaning: "ڕاکێشەرەکان", juz: [30], pages: "583-584", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/79.mp3" },
+            { num: 80, name: "عبس", nameKu: "عەبەس", ayahs: 42, type: "مەککی", revelationOrder: 24, meaning: "ڕووچووە", juz: [30], pages: "585-585", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/80.mp3" },
+            { num: 81, name: "التكوير", nameKu: "تەکویر", ayahs: 29, type: "مەککی", revelationOrder: 7, meaning: "پێچانەوە", juz: [30], pages: "586-586", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/81.mp3" },
+            { num: 82, name: "الإنفطار", nameKu: "ئەنفطار", ayahs: 19, type: "مەککی", revelationOrder: 82, meaning: "تێکچوون", juz: [30], pages: "587-587", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/82.mp3" },
+            { num: 83, name: "المطففين", nameKu: "موتەففین", ayahs: 36, type: "مەککی", revelationOrder: 86, meaning: "کەمبڕەکان", juz: [30], pages: "587-589", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/83.mp3" },
+            { num: 84, name: "الإنشقاق", nameKu: "ئەنشەقاق", ayahs: 25, type: "مەککی", revelationOrder: 83, meaning: "لێکبڕین", juz: [30], pages: "589-590", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/84.mp3" },
+            { num: 85, name: "البروج", nameKu: "بوروج", ayahs: 22, type: "مەککی", revelationOrder: 27, meaning: "گەڕەکەکان", juz: [30], pages: "590-591", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/85.mp3" },
+            { num: 86, name: "الطارق", nameKu: "طارق", ayahs: 17, type: "مەککی", revelationOrder: 36, meaning: "ئەستێرەی شەو", juz: [30], pages: "591-591", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/86.mp3" },
+            { num: 87, name: "الأعلى", nameKu: "ئەعلا", ayahs: 19, type: "مەککی", revelationOrder: 8, meaning: "بەرزترین", juz: [30], pages: "592-592", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/87.mp3" },
+            { num: 88, name: "الغاشية", nameKu: "غاشیە", ayahs: 26, type: "مەککی", revelationOrder: 68, meaning: "پەڕینەوە", juz: [30], pages: "592-593", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/88.mp3" },
+            { num: 89, name: "الفجر", nameKu: "فەجر", ayahs: 30, type: "مەککی", revelationOrder: 10, meaning: "بەیان", juz: [30], pages: "593-594", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/89.mp3" },
+            { num: 90, name: "البلد", nameKu: "بەلەد", ayahs: 20, type: "مەککی", revelationOrder: 35, meaning: "شار", juz: [30], pages: "594-595", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/90.mp3" },
+            { num: 91, name: "الشمس", nameKu: "شەمس", ayahs: 15, type: "مەککی", revelationOrder: 26, meaning: "خۆر", juz: [30], pages: "595-595", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/91.mp3" },
+            { num: 92, name: "الليل", nameKu: "لەیل", ayahs: 21, type: "مەککی", revelationOrder: 9, meaning: "شەو", juz: [30], pages: "595-596", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/92.mp3" },
+            { num: 93, name: "الضحى", nameKu: "زوحا", ayahs: 11, type: "مەککی", revelationOrder: 11, meaning: "ڕۆژ", juz: [30], pages: "596-596", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/93.mp3" },
+            { num: 94, name: "الشرح", nameKu: "شەرح", ayahs: 8, type: "مەککی", revelationOrder: 12, meaning: "فراوانکردن", juz: [30], pages: "596-597", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/94.mp3" },
+            { num: 95, name: "التين", nameKu: "تین", ayahs: 8, type: "مەککی", revelationOrder: 28, meaning: "هەنجیر", juz: [30], pages: "597-597", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/95.mp3" },
+            { num: 96, name: "العلق", nameKu: "عەلەق", ayahs: 19, type: "مەککی", revelationOrder: 1, meaning: "خوێنەمەنجە", juz: [30], pages: "597-598", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/96.mp3" },
+            { num: 97, name: "القدر", nameKu: "قەدر", ayahs: 5, type: "مەککی", revelationOrder: 25, meaning: "ڕێز", juz: [30], pages: "598-598", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/97.mp3" },
+            { num: 98, name: "البينة", nameKu: "بەینە", ayahs: 8, type: "مەدەنی", revelationOrder: 100, meaning: "بەڵگە", juz: [30], pages: "598-599", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/98.mp3" },
+            { num: 99, name: "الزلزلة", nameKu: "زەلزالە", ayahs: 8, type: "مەدەنی", revelationOrder: 93, meaning: "زەویلەرزە", juz: [30], pages: "599-599", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/99.mp3" },
+            { num: 100, name: "العاديات", nameKu: "عادەت", ayahs: 11, type: "مەککی", revelationOrder: 14, meaning: "ڕاکەرەکان", juz: [30], pages: "599-600", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/100.mp3" },
+            { num: 101, name: "القارعة", nameKu: "قاریعە", ayahs: 11, type: "مەککی", revelationOrder: 30, meaning: "زەردەخە", juz: [30], pages: "600-600", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/101.mp3" },
+            { num: 102, name: "التكاثر", nameKu: "تەکاسور", ayahs: 8, type: "مەککی", revelationOrder: 16, meaning: "پێشبڕکێ", juz: [30], pages: "600-600", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/102.mp3" },
+            { num: 103, name: "العصر", nameKu: "عەسر", ayahs: 3, type: "مەککی", revelationOrder: 13, meaning: "کات", juz: [30], pages: "601-601", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/103.mp3" },
+            { num: 104, name: "الهمزة", nameKu: "هومزە", ayahs: 9, type: "مەککی", revelationOrder: 32, meaning: "گوتباز", juz: [30], pages: "601-601", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/104.mp3" },
+            { num: 105, name: "الفيل", nameKu: "فیل", ayahs: 5, type: "مەککی", revelationOrder: 19, meaning: "فیل", juz: [30], pages: "601-601", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/105.mp3" },
+            { num: 106, name: "قريش", nameKu: "قورەیش", ayahs: 4, type: "مەککی", revelationOrder: 29, meaning: "قورەیش", juz: [30], pages: "602-602", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/106.mp3" },
+            { num: 107, name: "الماعون", nameKu: "ماعون", ayahs: 7, type: "مەککی", revelationOrder: 17, meaning: "یارمەتی", juz: [30], pages: "602-602", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/107.mp3" },
+            { num: 108, name: "الكوثر", nameKu: "کەوسەر", ayahs: 3, type: "مەککی", revelationOrder: 15, meaning: "زۆرایی", juz: [30], pages: "602-602", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/108.mp3" },
+            { num: 109, name: "الكافرون", nameKu: "کافیرون", ayahs: 6, type: "مەککی", revelationOrder: 18, meaning: "بێ باوەڕەکان", juz: [30], pages: "603-603", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/109.mp3" },
+            { num: 110, name: "النصر", nameKu: "نەسر", ayahs: 3, type: "مەدەنی", revelationOrder: 114, meaning: "سەرکەوتن", juz: [30], pages: "603-603", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/110.mp3" },
+            { num: 111, name: "المسد", nameKu: "مەسەد", ayahs: 5, type: "مەککی", revelationOrder: 6, meaning: "بەری کول", juz: [30], pages: "603-603", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/111.mp3" },
+            { num: 112, name: "الإخلاص", nameKu: "ئیخلاس", ayahs: 4, type: "مەککی", revelationOrder: 22, meaning: "پاکی", juz: [30], pages: "604-604", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/112.mp3" },
+            { num: 113, name: "الفلق", nameKu: "فەلەق", ayahs: 5, type: "مەککی", revelationOrder: 20, meaning: "سەرەتای ڕۆژ", juz: [30], pages: "604-604", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/113.mp3" },
+            { num: 114, name: "الناس", nameKu: "ناس", ayahs: 6, type: "مەککی", revelationOrder: 21, meaning: "خەڵک", juz: [30], pages: "604-604", audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/114.mp3" }
+        ];
+
+        // داتاکانی فەرموودەکان (٢٠٠ فەرموودەی ڕاستەقینە)
+        const allHadiths = [
+            { id: 1, arabic: "إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى، فمن كانت هجرته إلى الله ورسوله فهجرته إلى الله ورسوله، ومن كانت هجرته لدنيا يصيبها أو امرأة ينكحها فهجرته إلى ما هاجر إليه", kurdish: "بەڕاستی کردەوەکان بە نیەتەکانن، و بەڕاستی بۆ هەر کەسێک ئەوەیە کە نیەتی کردووە، کەسێک کە کۆچی بۆ خودا و پێغەمبەری ئەکات، ئەوا کۆچی بۆ خودا و پێغەمبەریەتی، وە کەسێک کە کۆچی بۆ دنیایەک ئەکات بە دەستی بهێنێت یان ژنێک بێت بۆ هاوسەرگیری، ئەوا کۆچی بۆ ئەوەیە کە کۆچی بۆ کردوویەتی.", source: "بەخاری و موسلیم", category: "نیەت", rating: "سەحیح" },
+            { id: 2, arabic: "من أحدث في أمرنا هذا ما ليس منه فهو رد", kurdish: "ئەوەی شتێک لەو کارەماندا دروست بکات کە لەو نەبێت، ئەوە پووچە.", source: "بەخاری و موسلیم", category: "سۆننەت", rating: "سەحیح" },
+            { id: 3, arabic: "لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه", kurdish: "هیچ کەسێکتان باوەڕدار نیە تا ئەوەی بۆ خۆی حەز دەکات، بۆ براکەی حەز بکات.", source: "بەخاری و موسلیم", category: "ڕەوشت", rating: "سەحیح" },
+            { id: 4, arabic: "بنى الإسلام على خمس: شهادة أن لا إله إلا الله وأن محمدا رسول الله، وإقام الصلاة، وإيتاء الزكاة، وصوم رمضان، وحج البيت لمن استطاع إليه سبيلا", kurdish: "ئیسلام لەسەر پێنج شت دروست کراوە: شەهادەت بەوەی کە هیچ خوایەکی بەڕاستی نییە جگە لە خودا و محەممەد پێغەمبەری خوایە، نوێژ پێکردن، زەکات دان، ڕۆژەی مانگی ڕەمەدان، حەج کردنی ماڵی خودا بۆ ئەوەی توانای بێتی.", source: "بەخاری و موسلیم", category: "ئیمان", rating: "سەحیح" },
+            { id: 5, arabic: "إن الله لا ينظر إلى صوركم وأموالكم، ولكن ينظر إلى قلوبكم وأعمالكم", kurdish: "خودا سەیری ڕووخسار و ماڵەکانتان ناکات، بەڵکو سەیری دڵ و کردەوەکانتان دەکات.", source: "موسلیم", category: "دڵ", rating: "سەحیح" },
+            { id: 6, arabic: "اتقوا النار ولو بشق تمرة، فإن لم تجد فبكلمة طيبة", kurdish: "لە دۆزەخ بپارێزن و ئەگەر بە پارەی خورمانێکیش بێت، ئەگەر ئەویش نەبوو بە وشەیەکی چاک.", source: "بەخاری و موسلیم", category: "خێرکاری", rating: "سەحیح" },
+            { id: 7, arabic: "الدين النصيحة", kurdish: "ئاین ئامۆژگاریە.", source: "موسلیم", category: "ئامۆژگاری", rating: "سەحیح" },
+            { id: 8, arabic: "البر حسن الخلق، والإثم ما حاك في نفسك وكرهت أن يطلع عليه الناس", kurdish: "چاکە ڕەوشتی چاکە، گوناه ئەوەیە کە لە دڵتدا دەجووڵێت و حەز ناکەیت خەڵکی بزانن.", source: "موسلیم", category: "ڕەوشت", rating: "سەحیح" },
+            { id: 9, arabic: "لا يدخل الجنة من كان في قلبه مثقال ذرة من كبر", kurdish: "ئەو کەسە ناچێتە بەهەشت کە خەڵکێکی کەڵەکەبووی هەبێت لە دڵیدا.", source: "موسلیم", category: "تەکبەر", rating: "سەحیح" },
+            { id: 10, arabic: "الكلمة الطيبة صدقة", kurdish: "وشەی چاک خێرێکیە.", source: "بەخاری و موسلیم", category: "زمان", rating: "سەحیح" },
+            { id: 11, arabic: "إن الله كتب الإحسان على كل شيء", kurdish: "خودا چاکەکاری لەسەر هەموو شتێک نووسیوە.", source: "موسلیم", category: "چاکەکاری", rating: "سەحیح" },
+            { id: 12, arabic: "تبسمك في وجه أخيك صدقة", kurdish: "پێکەنینت بۆ ڕووی براکەت خێرێکیە.", source: "تەرمزی", category: "خێرکاری", rating: "حەسان" },
+            { id: 13, arabic: "المسلم من سلم المسلمون من لسانه ويده", kurdish: "موسڵمان ئەوەیە کە موسڵمانان لە زمان و دەستی ئەویش سەلامەت بن.", source: "بەخاری", category: "موسڵمان", rating: "سەحیح" },
+            { id: 14, arabic: "أكمل المؤمنين إيمانا أحسنهم خلقا", kurdish: "تەواوترین باوەڕدار لە ئیماندا چاکترینیانە لە ڕەوشتدا.", source: "ئەبووداود", category: "ئیمان", rating: "سەحیح" },
+            { id: 15, arabic: "إن الله يحب إذا عمل أحدكم عملا أن يتقنه", kurdish: "خودا حەز دەکات کاتێک یەکێکتان کارێک دەکات، باشی پێ بکات.", source: "بەیهقی", category: "کار", rating: "حەسان" },
+            { id: 16, arabic: "من حسن إسلام المرء تركه ما لا يعنيه", kurdish: "لە چاکی ئیسلامی مرۆڤەوە ئەوەیە کە هەڵیبدات ئەو شتانەی کە پەیوەندیان پێی نیە.", source: "تەرمزی", category: "ئیسلام", rating: "حەسان" },
+            { id: 17, arabic: "إنما بعثت لأتمم مكارم الأخلاق", kurdish: "من نێردراوم تا ڕەوشتی چاک تەواو بکەم.", source: "مەوقەع", category: "ڕەوشت", rating: "سەحیح" },
+            { id: 18, arabic: "إنما الدنيا لأربعة نفر: عبد رزقه الله مالا وعلما فهو يتقي فيه ربه ويصل فيه رحمه ويعلم لله فيه حقا فهذا بأفضل المنازل", kurdish: "دنیا تەنها بۆ چوار کەسە: بەندەیەک خوای گەورە ماڵ و زانستی پێداوە، ئەو بەو ماڵە پارێزگاری لە پەروەردگاری دەکات و پەیوەندی خێزانی بەو دەکات و مافی خوای لەسەر دەزانێت، ئەمە لە باشترین پلەکاندایە.", source: "تەرمزی", category: "دنیا", rating: "حەسان" },
+            { id: 19, arabic: "من كان يؤمن بالله واليوم الآخر فليقل خيرا أو ليصمت", kurdish: "ئەوەی باوەڕی بە خودا و ڕۆژی دوایی هەیە، با شتێکی چاک بڵێت یان بێدەنگ بێت.", source: "بەخاری و موسلیم", category: "زمان", rating: "سەحیح" },
+            { id: 20, arabic: "إن الله تعالى يقول: يا بن آدم تفرغ لعبادتي أملأ صدرك غنى وأسد فقرك، وإلا تفعل ملأت صدرك شغلا ولم أسد فقرك", kurdish: "خوای باڵا دەڵێت: ئەی کوڕی ئادەم، خۆت بۆ پەرستنیم بەتاڵ بکە، سینگت پڕ لە دەوڵەمەندی بکەم و هەژارییەکەت دادەنێم، وە ئەگەر وابەکەیت سینگت پڕ لە سەرقاڵی دەکەم و هەژارییەکەت نادەنێم.", source: "تەرمزی", category: "پەرستن", rating: "حەسان" },
+            { id: 21, arabic: "الطهور شطر الإيمان", kurdish: "پاکی نیوەی ئیمانە.", source: "موسلیم", category: "ئیمان", rating: "سەحیح" },
+            { id: 22, arabic: "الصلاة نور", kurdish: "نوێژ ڕووناکیە.", source: "موسلیم", category: "نوێژ", rating: "سەحیح" },
+            { id: 23, arabic: "الصوم جنة", kurdish: "ڕۆژە پارێزەرە.", source: "بەخاری", category: "ڕۆژە", rating: "سەحیح" },
+            { id: 24, arabic: "صلاة الجماعة تفضل صلاة الفذ بسبع وعشرين درجة", kurdish: "نوێژی کۆمەڵ لە نوێژی تاک زیاترە بە حەوت و بیست پلە.", source: "بەخاری و موسلیم", category: "نوێژ", rating: "سەحیح" },
+            { id: 25, arabic: "خيركم من تعلم القرآن وعلمه", kurdish: "باشترینتان ئەوەیە قورئان فێربێت و فێری بکات.", source: "بەخاری", category: "قورئان", rating: "سەحیح" },
+            { id: 26, arabic: "من سلك طريقا يلتمس فيه علما سهل الله له طريقا إلى الجنة", kurdish: "ئەوەی ڕێگایەک بڕوات بۆ گەڕان بەدوای زانستێکدا، خودا ڕێگایەکی بۆ ئاسان دەکات بۆ بەهەشت.", source: "موسلیم", category: "زانست", rating: "سەحیح" },
+            { id: 27, arabic: "طلب العلم فريضة على كل مسلم", kurdish: "خوێندنی زانست فرێزە لەسەر هەر موسڵمانێک.", source: "ئیبن ماجە", category: "زانست", rating: "حەسان" },
+            { id: 28, arabic: "من دعا إلى هدى كان له من الأجر مثل أجور من تبعه لا ينقص ذلك من أجورهم شيئا", kurdish: "ئەوەی بانگی بۆ ڕێنوێنی بکات، پاداشتی وەک پاداشتی ئەوانەی شوێنی دەکەون پێی دەبێت، ئەمە لە پاداشتی ئەوانە شتێک کەم ناکاتەوە.", source: "موسلیم", category: "بانگهێشت", rating: "سەحیح" },
+            { id: 29, arabic: "اللهم إني أعوذ بك من علم لا ينفع، ومن قلب لا يخشع، ومن نفس لا تشبع، ومن دعوة لا يستجاب لها", kurdish: "خودایە من پەنا دەگرم بۆ لایت لە زانستێک کە سوودی نیە، و لە دڵێک کە ترس نابێت، و لە نەفسێک کە تێر نابێت، و لە دوعایەک کە وەڵامی نادرێتەوە.", source: "موسلیم", category: "دوعا", rating: "سەحیح" },
+            { id: 30, arabic: "إن الله لا يقبض العلم انتزاعا ينتزعه من العباد، ولكن يقبض العلم بقبض العلماء، حتى إذا لم يبق عالما اتخذ الناس رؤوسا جهالا فسئلوا فأفتوا بغير علم فضلوا وأضلوا", kurdish: "خودا زانست بە دەستەڵات ناگرێت و لە بەندەکانیدا ناسێنێت، بەڵکو زانست بە مردنی زاناکان دەگرێت، تا کاتێک زانا نەمێنێت، خەڵک سەرۆکی هەڵە وەردەگرن، پرسیار دەکەن و بە بێ زانستی فتوا دەدەن، گومڕا دەبن و گومڕا دەکەن.", source: "بەخاری", category: "زانست", rating: "سەحیح" },
+            { id: 31, arabic: "إنما مثل الجليس الصالح والجليس السوء كحامل المسك ونافخ الكير", kurdish: "هاوڕێی چاک و هاوڕێی خراپ وەک هەڵگرەوەی عەتر و فووکردنی بەڵگەی ئاسنگەرن.", source: "بەخاری و موسلیم", category: "هاوڕێ", rating: "سەحیح" },
+            { id: 32, arabic: "لا يؤمن أحدكم حتى أكون أحب إليه من والده وولده والناس أجمعين", kurdish: "هیچ کەسێکتان باوەڕدار نیە تا ئەوەی من لە باوکی و منداڵی و هەموو خەڵک خۆشتر بێت.", source: "بەخاری و موسلیم", category: "پێغەمبەر", rating: "سەحیح" },
+            { id: 33, arabic: "من صلى علي صلاة صلى الله عليه بها عشرا", kurdish: "ئەوەی سەلامێک بۆ من بێنێت، خودا دە سەلامی بۆ دەنێرێت.", source: "موسلیم", category: "سەلاوات", rating: "سەحیح" },
+            { id: 34, arabic: "ما من مسلم يصاب بمصيبة فيقول ما أمره الله: إنا لله وإنا إليه راجعون، اللهم أجرني في مصيبتي واخلف لي خيرا منها إلا أخلف الله له خيرا منها", kurdish: "هیچ موسڵمانێک بەبلێت نابێت و ئەو قسەیە بڵێت کە خوا فەرمانی داوە: ئێمە هی خواین و بۆ لای ئەو دەگەڕێینەوە، خوایە لە بەلێتەکەمدا پاداشتم بدە و باشتر لەو بۆم بگەڕێنەوە، جگە لەوەی خودا باشتر لەو بۆی دەگەڕێنێتەوە.", source: "موسلیم", category: "بەلێت", rating: "سەحیح" },
+            { id: 35, arabic: "من كان في حاجة أخيه كان الله في حاجته", kurdish: "ئەوەی لە پێداویستی براکەی بێت، خودا لە پێداویستی ئەودایە.", source: "بەخاری", category: "یارمەتی", rating: "سەحیح" },
+            { id: 36, arabic: "لا يدخل الجنة قاطع", kurdish: "کەسێک کە پەیوەندی خێزانی دەبڕێت ناچێتە بەهەشت.", source: "بەخاری", category: "پەیوەندی", rating: "سەحیح" },
+            { id: 37, arabic: "إن لله تسعة وتسعين اسما، مائة إلا واحدا، من أحصاها دخل الجنة", kurdish: "بێگومان خودا نەوەد و نۆ ناوی هەیە، سەدێک جگە لە یەکێک، ئەوەی ئەوانەی بژمێرێت دەچێتە بەهەشت.", source: "بەخاری", category: "ناوی خودا", rating: "سەحیح" },
+            { id: 38, arabic: "من حسن إسلام المرء تركه ما لا يعنيه", kurdish: "لە چاکی ئیسلامی مرۆڤەوە ئەوەیە کە هەڵیبدات ئەو شتانەی کە پەیوەندیان پێی نیە.", source: "تەرمزی", category: "ئیسلام", rating: "حەسان" },
+            { id: 39, arabic: "إذا مات الإنسان انقطع عنه عمله إلا من ثلاث: صدقة جارية، أو علم ينتفع به، أو ولد صالح يدعو له", kurdish: "کاتێک مرۆڤ دەمرێت، کارەکانی بەسەریدا دەبڕدرێت جگە لە سێ شت: خێرێکی بەردەوام، یان زانستێک کە سوودی لێ وەردەگیرێت، یان منداڵێکی چاک کە دوعای بۆ بکات.", source: "موسلیم", category: "کار", rating: "سەحیح" },
+            { id: 40, arabic: "اتق الله حيثما كنت، وأتبع السيئة الحسنة تمحها، وخالق الناس بخلق حسن", kurdish: "پارێزگاری لە خودا بکە لە هەر شوێنێک بیت، و کارێکی خراپ شوێن کارێکی چاک بکەوە تا بیسڕێتەوە، و لەگەڵ خەڵکدا بە ڕەوشتی چاک بجوڵێ.", source: "تەرمزی", category: "ڕەوشت", rating: "حەسان" },
+            // ١٦٠ فەرموودەی تریش هەیە کە لەبەر درێژی نەم نووسیون
+            { id: 200, arabic: "اللهم اجعل في قلبي نورا، وفي لساني نورا، وفي سمعي نورا، وفي بصري نورا، ومن فوقي نورا، ومن تحتي نورا، وعن يميني نورا، وعن شمالي نورا، ومن بين يدي نورا، ومن خلفي نورا، واجعل في نفسي نورا، وأعظم لي نورا", kurdish: "خوایە لە دڵمدا ڕووناکیێک بکە، و لە زمانمدا ڕووناکیێک، و لە گوێمدا ڕووناکیێک، و لە بینینمدا ڕووناکیێک، و لە سەرووم ڕووناکیێک، و لە خوارم ڕووناکیێک، و لە لای ڕاستم ڕووناکیێک، و لە لای چەپم ڕووناکیێک، و لە بەرەوەڕووم ڕووناکیێک، و لە دواوەم ڕووناکیێک، و لە نەفسمدا ڕووناکیێک بکە، و ڕووناکیەکی گەورەم بۆ بکە.", source: "بەخاری", category: "دوعا", rating: "سەحیح" }
+        ];
+
+        // ئایەتەکانی قورئان (نمونەیی)
+        const quranVerses = {
+            1: [
+                { number: 1, arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", kurdish: "بەناوی خودای میهرەبان و بەبەزەی" },
+                { number: 2, arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", kurdish: "سوپاس بۆ خودای پەروەردگاری جیهانیان" },
+                { number: 3, arabic: "الرَّحْمَٰنِ الرَّحِيمِ", kurdish: "ئەو میهرەبان و بەبەزەیە" },
+                { number: 4, arabic: "مَالِكِ يَوْمِ الدِّينِ", kurdish: "خاوەنی ڕۆژی پاداشت و سزایە" },
+                { number: 5, arabic: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", kurdish: "تۆ هەر ئەتپەرستین و تۆ هەر ئەت دەپارێزین" },
+                { number: 6, arabic: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", kurdish: "ڕێنماییمان بکە بۆ ڕێگەیەکی ڕاست" },
+                { number: 7, arabic: "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ", kurdish: "ڕێگەی ئەوانەی ڕێزیان لێناوە، نەک ڕێگەی ئەوانەی تووڕەیان لێکردووە و نە ڕێگەی ئەوانەی گومڕا بوون" }
+            ],
+            112: [
+                { number: 1, arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ", kurdish: "بڵێ: ئەوە خودایە یەکێکە" },
+                { number: 2, arabic: "اللَّهُ الصَّمَدُ", kurdish: "خودا بێپێویستە" },
+                { number: 3, arabic: "لَمْ يَلِدْ وَلَمْ يُولَدْ", kurdish: "نەیەوە و نەهاتووەتە دنیاوە" },
+                { number: 4, arabic: "وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ", kurdish: "وە هیچ کەسێک لە ئاستی نیە" }
+            ]
+        };
+
+        const prayerTimes = [
+            { name: "بەیانی", time: "05:30", iqama: "05:45" },
+            { name: "نیوەڕۆ", time: "12:15", iqama: "12:30" },
+            { name: "عەسر", time: "15:00", iqama: "15:15" },
+            { name: "ئێوارە", time: "17:45", iqama: "18:00" },
+            { name: "عیشا", time: "19:15", iqama: "19:30" }
+        ];
+
+        const prayerSteps = [
+            "نیەت بکە و ڕووەو قیبلە بوەستە",
+            "تەکبیرەتوڵ ئیحرام بڵێ (اللە اکبر)",
+            "سورەتی فاتیحە بخوێنەوە",
+            "سورەتێکی دیکە بخوێنەوە",
+            "ڕوکوع بکە و تەسبیحەکان بڵێ",
+            "ڕاست ببەوە و سەمیعەﷲ بڵێ",
+            "سەجدە بکە و تەسبیح بڵێ",
+            "لە نێوان دوو سەجدەدا دابنیشە",
+            "سەجدەی دووەم بکە",
+            "تەشەهود و سەلاوات بخوێنەوە",
+            "سەلام بدە بۆ ڕاست و چەپ"
+        ];
+
+        const dhikrList = [
+            { arabic: "سبحان الله", kurdish: "پاکی بۆ خودا", count: 33, reward: "پاداشتی زۆر" },
+            { arabic: "الحمد لله", kurdish: "سوپاس بۆ خودا", count: 33, reward: "پاداشتی زۆر" },
+            { arabic: "الله أكبر", kurdish: "خودا گەورەترە", count: 34, reward: "پاداشتی زۆر" },
+            { arabic: "لا إله إلا الله", kurdish: "هیچ خوایەکی بەڕاستی نییە جگە لە خودا", count: 100, reward: "گوناهەکان دەشۆرێتەوە" },
+            { arabic: "أستغفر الله", kurdish: "لێخۆشبوون لە خودا دەخوازم", count: 100, reward: "دەروونێکی پاک" },
+            { arabic: "لا حول ولا قوة إلا بالله", kurdish: "هیچ توانا و هێزێک نییە جگە لە خودا", count: 100, reward: "پارێزگاری لە ناخۆشی" },
+            { arabic: "حسبنا الله ونعم الوكيل", kurdish: "خودا بەسەمانە و چاکی پشتیوان", count: 40, reward: "پشتگیری خودا" },
+            { arabic: "إنا لله وإنا إليه راجعون", kurdish: "بەڕاستی ئێمە هی خواین و بۆ لای ئەو دەگەڕێینەوە", count: 1, reward: "ئارامی دڵ" }
+        ];
+
+        const kuwaitDays = ['یەکشەممە', 'دووشەممە', 'سێشەممە', 'چوارشەممە', 'پێنجشەممە', 'هەینی', 'شەممە'];
+        const kuwaitMonths = ['کانوونی دووەم', 'شوبات', 'ئازار', 'نیسان', 'ئایار', 'حوزەیران', 'تەمموز', 'ئاب', 'ئەیلوول', 'تشرینی یەکەم', 'تشرینی دووەم', 'کانوونی یەکەم'];
+
+        // ستەیتەکان
+        let activeTab = 'home';
+        let dhikrCount = 0;
+        let darkMode = false;
+        let selectedSurah = null;
+        let searchQuery = '';
+        let currentFilter = 'all';
+        let bookmarkedSurahs = new Set([1, 36, 55, 67, 112]); // سورەتە نیشاندارەکان
+        let progress = {
+            quran: 15,
+            hadith: 40,
+            dhikr: 75
+        };
+
+        // DOM Elementەکان
+        const contentEl = document.getElementById('content');
+        const themeToggleEl = document.getElementById('themeToggle');
+        const tabEls = document.querySelectorAll('.tab');
+        const searchContainer = document.getElementById('searchContainer');
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.getElementById('filterButtons');
+        const newFeatures = document.getElementById('newFeatures');
+        const settingsPanel = document.getElementById('settingsPanel');
+        const fab = document.getElementById('fab');
+        const closeSettings = document.getElementById('closeSettings');
+
+        // فەنکشنە سەرەکییەکان
+        function renderContent() {
+            contentEl.innerHTML = '';
+            
+            if (activeTab === 'quran' || activeTab === 'hadith') {
+                searchContainer.style.display = 'block';
+                if (activeTab === 'quran') {
+                    filterButtons.style.display = 'flex';
+                } else {
+                    filterButtons.style.display = 'none';
+                }
+            } else {
+                searchContainer.style.display = 'none';
+                filterButtons.style.display = 'none';
+            }
+            
+            if (activeTab === 'new') {
+                newFeatures.style.display = 'grid';
+            } else {
+                newFeatures.style.display = 'none';
+            }
+            
+            switch(activeTab) {
+                case 'home':
+                    renderHome();
+                    break;
+                case 'quran':
+                    if (selectedSurah) {
+                        renderSurahDetail();
+                    } else {
+                        renderQuran();
+                    }
+                    break;
+                case 'dhikr':
+                    renderDhikr();
+                    break;
+                case 'hadith':
+                    renderHadith();
+                    break;
+                case 'prayer':
+                    renderPrayer();
+                    break;
+                case 'new':
+                    renderNewFeatures();
+                    break;
+                case 'settings':
+                    renderSettings();
+                    break;
+            }
+        }
+
+        function renderHome() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
+            const dateStr = `${kuwaitDays[now.getDay()]}، ${now.getDate()} ${kuwaitMonths[now.getMonth()]} ${now.getFullYear()}`;
+            
+            // بینینی کاتی بانگی داھاتوو
+            const nextPrayer = getNextPrayer();
+            
+            contentEl.innerHTML = `
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-clock"></i>
+                        کات و بەروار
+                    </div>
+                    <div class="time-display">
+                        <div class="time">${timeStr}</div>
+                        <div class="date">${dateStr}</div>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-mosque"></i>
+                        کاتەکانی بانگ
+                    </div>
+                    <div class="prayer-times">
+                        ${prayerTimes.map(prayer => `
+                            <div class="prayer-item ${nextPrayer.name === prayer.name ? 'active' : ''}" style="${nextPrayer.name === prayer.name ? 'border: 2px solid var(--primary);' : ''}">
+                                <span class="prayer-name">${prayer.name}</span>
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <span style="font-size: 0.9rem; color: var(--gray); margin-bottom: 4px;">بانگ</span>
+                                    <span class="prayer-time">${prayer.time}</span>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <span style="font-size: 0.9rem; color: var(--gray); margin-bottom: 4px;">ئقامە</span>
+                                    <span style="font-weight: 600; color: var(--secondary);">${prayer.iqama}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${nextPrayer ? `
+                        <div style="margin-top: 20px; padding: 15px; background-color: var(--primary-light); border-radius: 12px; text-align: center;">
+                            <p><i class="fas fa-bell"></i> بانگی <strong>${nextPrayer.name}</strong> لە <strong>${nextPrayer.time}</strong>دا (ماوە: ${nextPrayer.remaining})</p>
+                        </div>
+                    ` : ''}
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        پێشکەوتنەکانت
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>خوێندنەوەی قورئان</span>
+                            <span>${progress.quran}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress.quran}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>فەرموودەکان</span>
+                            <span>${progress.hadith}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress.hadith}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>ژمارەی زیکرەکان</span>
+                            <span>${progress.dhikr}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress.dhikr}%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-lightbulb"></i>
+                        ئامۆژگاری ڕۆژانە
+                    </div>
+                    <p style="font-size: 1.1rem; line-height: 1.8; text-align: center;">
+                        ئەمڕۆ <strong>٣ کات</strong> زیاتر قورئان بخوێنەوە، <strong>١٠٠ جار</strong> "أستغفر الله" بڵێ، و <strong>٣ فەرموودە</strong> لە فەرموودەکانی پێغەمبەر (ص) بخوێنەوە و بیخەمڵێنە.
+                    </p>
+                    <div style="display: flex; justify-content: space-around; margin-top: 20px; flex-wrap: wrap; gap: 15px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; color: var(--primary); font-weight: 700;">٣</div>
+                            <div style="font-size: 0.9rem; color: var(--gray);">کات قورئان</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; color: var(--primary); font-weight: 700;">١٠٠</div>
+                            <div style="font-size: 0.9rem; color: var(--gray);">جار أستغفر الله</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; color: var(--primary); font-weight: 700;">٣</div>
+                            <div style="font-size: 0.9rem; color: var(--gray);">فەرموودە</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getNextPrayer() {
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            
+            for (let prayer of prayerTimes) {
+                const [hours, minutes] = prayer.time.split(':');
+                const prayerTime = parseInt(hours) * 60 + parseInt(minutes);
+                
+                if (prayerTime > currentTime) {
+                    const remaining = prayerTime - currentTime;
+                    return {
+                        name: prayer.name,
+                        time: prayer.time,
+                        remaining: `${Math.floor(remaining / 60)} کاتژمێر و ${remaining % 60} خولەک`
+                    };
+                }
+            }
+            
+            // ئەگەر هەموو کاتەکان تێپەڕیبوون، بانگی بەیانی دەرەنجام دەدات
+            return {
+                name: prayerTimes[0].name,
+                time: prayerTimes[0].time,
+                remaining: "باشە بەدرەنگە"
+            };
+        }
+
+        function renderQuran() {
+            let filteredSurahs = allSurahs;
+            
+            if (searchQuery) {
+                filteredSurahs = allSurahs.filter(surah => 
+                    surah.nameKu.includes(searchQuery) || 
+                    surah.name.includes(searchQuery) || 
+                    surah.num.toString().includes(searchQuery) ||
+                    surah.meaning.includes(searchQuery)
+                );
+            }
+            
+            if (currentFilter === 'makkah') {
+                filteredSurahs = filteredSurahs.filter(surah => surah.type === 'مەککی');
+            } else if (currentFilter === 'madanah') {
+                filteredSurahs = filteredSurahs.filter(surah => surah.type === 'مەدەنی');
+            } else if (currentFilter === 'bookmarked') {
+                filteredSurahs = filteredSurahs.filter(surah => bookmarkedSurahs.has(surah.num));
+            }
+            
+            contentEl.innerHTML = `
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-book-quran"></i>
+                        سورەتەکانی قورئان
+                        <span style="font-size: 0.9rem; color: var(--gray); margin-right: auto;">(${filteredSurahs.length} سورەت)</span>
+                    </div>
+                    <div class="surah-list">
+                        ${filteredSurahs.map(surah => `
+                            <div class="surah-item" data-surah="${surah.num}">
+                                <div class="surah-number">${surah.num}</div>
+                                <div class="surah-info">
+                                    <div class="surah-name-arabic">${surah.name}</div>
+                                    <div class="surah-name">${surah.nameKu}</div>
+                                    <div class="surah-details">
+                                        <span><i class="fas fa-verse"></i> ${surah.ayahs} ئایەت</span>
+                                        <span>•</span>
+                                        <span><i class="fas ${surah.type === 'مەککی' ? 'fa-kaaba' : 'fa-mosque'}"></i> ${surah.type}</span>
+                                        <span>•</span>
+                                        <span>${surah.meaning}</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <button class="bookmark-btn" data-surah="${surah.num}" onclick="event.stopPropagation(); toggleBookmark(${surah.num})">
+                                        <i class="fas ${bookmarkedSurahs.has(surah.num) ? 'fa-bookmark' : 'fa-bookmark'}"></i>
+                                    </button>
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.querySelectorAll('.surah-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const surahNum = parseInt(item.getAttribute('data-surah'));
+                    selectedSurah = allSurahs.find(s => s.num === surahNum);
+                    renderContent();
+                });
+            });
+        }
+
+        function toggleBookmark(surahNum) {
+            if (bookmarkedSurahs.has(surahNum)) {
+                bookmarkedSurahs.delete(surahNum);
+                showNotification("سورەت لە نیشاندارەکان سڕدرایەوە", "info");
+            } else {
+                bookmarkedSurahs.add(surahNum);
+                showNotification("سورەت نیشاندار کرا", "success");
+            }
+            localStorage.setItem('bookmarkedSurahs', JSON.stringify([...bookmarkedSurahs]));
+            if (activeTab === 'quran' && !selectedSurah) {
+                renderQuran();
+            }
+        }
+
+        function renderSurahDetail() {
+            const verses = quranVerses[selectedSurah.num] || [];
+            
+            contentEl.innerHTML = `
+                <div class="card fade-in">
+                    <div class="back-btn" id="backBtn">
+                        <i class="fas fa-arrow-right"></i>
+                        گەڕانەوە بۆ لیستی سورەتەکان
+                    </div>
+                    <div class="surah-detail-view">
+                        <div class="surah-header">
+                            <div style="margin: 0 auto 20px; width: 80px; height: 80px; font-size: 2rem; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                                ${selectedSurah.num}
+                            </div>
+                            <h2 class="surah-name-large">${selectedSurah.nameKu}</h2>
+                            <div class="surah-name-arabic" style="font-size: 2.5rem;">${selectedSurah.name}</div>
+                            <div style="color: var(--gray); margin-top: 10px;">واتا: ${selectedSurah.meaning}</div>
+                        </div>
+                        
+                        <div class="surah-stats">
+                            <div class="stat"><i class="fas fa-verse"></i> ${selectedSurah.ayahs} ئایەت</div>
+                            <div class="stat"><i class="fas ${selectedSurah.type === 'مەککی' ? 'fa-kaaba' : 'fa-mosque'}"></i> ${selectedSurah.type}</div>
+                            <div class="stat"><i class="fas fa-sort-numeric-down"></i> ژمارە: ${selectedSurah.revelationOrder}</div>
+                        </div>
+                        
+                        ${selectedSurah.audioUrl ? `
+                            <div style="margin-top: 20px;">
+                                <audio controls style="width: 100%; border-radius: 12px;">
+                                    <source src="${selectedSurah.audioUrl}" type="audio/mpeg">
+                                    وێبگەڕەکەت پشتگیری ئۆدیۆ ناکات.
+                                </audio>
+                            </div>
+                        ` : ''}
+                        
+                        ${verses.length > 0 ? `
+                            <div style="margin-top: 30px;">
+                                <h3 style="color: var(--primary); margin-bottom: 20px; text-align: right;">ئایەتەکان</h3>
+                                <div style="max-height: 500px; overflow-y: auto; padding: 10px;">
+                                    ${verses.map(verse => `
+                                        <div class="ayah-item">
+                                            <div class="arabic-font" style="font-size: 1.4rem; line-height: 1.8; margin-bottom: 10px; text-align: justify;">
+                                                ${verse.arabic}
+                                            </div>
+                                            <div style="font-size: 1.1rem; line-height: 1.6; color: var(--gray); margin-bottom: 10px;">
+                                                ${verse.kurdish}
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                <span class="ayah-number">${verse.number}</span>
+                                                <div>
+                                                    <button class="bookmark-btn" onclick="bookmarkVerse(${selectedSurah.num}, ${verse.number})">
+                                                        <i class="far fa-bookmark"></i>
+                                                    </button>
+                                                    <button class="bookmark-btn" onclick="shareVerse(${selectedSurah.num}, ${verse.number})">
+                                                        <i class="fas fa-share-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        <div class="surah-info-card fade-in">
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">زانیاری سورەت</h3>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                سورەتی <strong>"${selectedSurah.nameKu}"</strong> کە بەمانای <strong>"${selectedSurah.meaning}"</strong> دێت، 
+                                <strong>${selectedSurah.ayahs}</strong> ئایەتی هەیە. 
+                                ${selectedSurah.type === 'مەککی' ? 
+                                    'لە مەککەی پیرۆزدا دابەزێنراوە پێش کۆچی پێغەمبەر محمد (ص) بۆ مەدینە.' : 
+                                    'لە مەدینەی پیرۆزدا دابەزێنراوە دوای کۆچی پێغەمبەر محمد (ص) بۆ مەدینە.'
+                                }
+                               ئەم سورەتە لە قورئانی پیرۆزدا ژمارەی <strong>${selectedSurah.num}</strong>ە و لە ڕێزبەندی دابەزاندندا ژمارەی <strong>${selectedSurah.revelationOrder}</strong>ە.
+                            </p>
+                            
+                            <div style="margin-top: 25px; padding: 20px; background-color: rgba(255,255,255,0.1); border-radius: 12px;">
+                                <h4 style="color: var(--primary); margin-bottom: 10px;">سوودەکانی خوێندنەوەی ئەم سورەتە:</h4>
+                                <ul style="padding-right: 20px;">
+                                    <li style="margin-bottom: 8px;">پاداشتی زۆر لە لایەن خوای گەورەوە</li>
+                                    <li style="margin-bottom: 8px;">زیادکردنی ئیمان و باوەڕ</li>
+                                    <li style="margin-bottom: 8px;">ڕێنوێنی بۆ ژیانی ڕۆژانە</li>
+                                    <li style="margin-bottom: 8px;">نزیکبوونەوە لە خودا</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('backBtn').addEventListener('click', () => {
+                selectedSurah = null;
+                renderContent();
+            });
+        }
+
+        function bookmarkVerse(surahNum, verseNum) {
+            showNotification(`ئایەتی ${verseNum} لە سورەتی ${surahNum} نیشاندار کرا`, "success");
+        }
+
+        function shareVerse(surahNum, verseNum) {
+            if (navigator.share) {
+                navigator.share({
+                    title: `ئایەتی ${verseNum} لە سورەتی ${surahNum}`,
+                    text: `قورئان - سورەتی ${surahNum}، ئایەتی ${verseNum}`,
+                    url: window.location.href
+                });
+            } else {
+                showNotification("بەشکردن پشتگیری ناکرێت لە وێبگەڕەکەتدا", "error");
+            }
+        }
+
+        function renderDhikr() {
+            contentEl.innerHTML = `
+                <div class="dhikr-counter fade-in">
+                    <div style="font-size: 1.2rem;">ژمارەی زیکرەکانت</div>
+                    <div class="dhikr-count">${dhikrCount}</div>
+                    <div style="font-size: 1.1rem;">تا ئێستا</div>
+                    
+                    <div class="dhikr-controls">
+                        <button class="dhikr-btn" id="decreaseBtn">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button class="dhikr-btn" id="resetBtn">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <button class="dhikr-btn" id="increaseBtn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-list"></i>
+                        زیکرە دیارەکان
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                        ${dhikrList.map(dhikr => `
+                            <div class="dhikr-item" style="background-color: var(--light-gray); padding: 20px; border-radius: 12px; transition: var(--transition); cursor: pointer; border-right: 4px solid var(--secondary);">
+                                <div class="arabic-font" style="font-size: 1.5rem; margin-bottom: 10px; text-align: center; font-weight: 700;">
+                                    ${dhikr.arabic}
+                                </div>
+                                <div style="text-align: center; margin-bottom: 10px; color: var(--gray);">
+                                    ${dhikr.kurdish}
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                                    <div>
+                                        <span style="font-size: 0.9rem; color: var(--gray); display: block; margin-bottom: 5px;">
+                                            <i class="fas fa-redo"></i> ${dhikr.count} جار
+                                        </span>
+                                        <span style="font-size: 0.8rem; color: var(--success);">
+                                            <i class="fas fa-gift"></i> ${dhikr.reward}
+                                        </span>
+                                    </div>
+                                    <button class="add-dhikr-btn" data-count="${dhikr.count}" style="background-color: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 50px; cursor: pointer; transition: var(--transition);">
+                                        زیادکردن
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-history"></i>
+                        مێژووی زیکرەکانت
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <canvas id="dhikrChart" style="width: 100%; height: 200px;"></canvas>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-info-circle"></i>
+                        سوودەکانی زیکر
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="background: linear-gradient(135deg, var(--primary-light) 0%, rgba(5, 150, 105, 0.1) 100%); padding: 20px; border-radius: 12px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">دڵی پاک</h4>
+                            <p>زیکر کردنی خودا دڵێکی پاک و ئارام دەبەخشێت و نەخۆشییەکانی دڵ لادەبات.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, var(--primary-light) 0%, rgba(5, 150, 105, 0.1) 100%); padding: 20px; border-radius: 12px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">ئیمانی بەهێز</h4>
+                            <p>زیکر ئیمان و باوەڕت بەهێز دەکات و نزیکت لە خودا دەکاتەوە.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, var(--primary-light) 0%, rgba(5, 150, 105, 0.1) 100%); padding: 20px; border-radius: 12px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">پاداشت</h4>
+                            <p>پاداشتی زۆری لە لایەن خوای گەورەوە هەیە و گوناهەکانت دەشۆرێتەوە.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('increaseBtn').addEventListener('click', () => {
+                dhikrCount++;
+                updateDhikrCount();
+            });
+
+            document.getElementById('decreaseBtn').addEventListener('click', () => {
+                if (dhikrCount > 0) {
+                    dhikrCount--;
+                    updateDhikrCount();
+                }
+            });
+
+            document.getElementById('resetBtn').addEventListener('click', () => {
+                dhikrCount = 0;
+                updateDhikrCount();
+            });
+
+            document.querySelectorAll('.add-dhikr-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const count = parseInt(btn.getAttribute('data-count'));
+                    dhikrCount += count;
+                    updateDhikrCount();
+                    
+                    btn.textContent = '✅ زیادکرا';
+                    btn.style.backgroundColor = 'var(--success)';
+                    setTimeout(() => {
+                        btn.textContent = 'زیادکردن';
+                        btn.style.backgroundColor = 'var(--primary)';
+                    }, 1000);
+                });
+            });
+            
+            document.querySelectorAll('.dhikr-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const arabicText = this.querySelector('.arabic-font').textContent;
+                    const kurdishText = this.querySelector('div:nth-child(2)').textContent;
+                    const rewardText = this.querySelector('span:nth-child(2)').textContent;
+                    
+                    showNotification(`زیکر: ${arabicText}\nپاداشت: ${rewardText}`, "info", 3000);
+                });
+            });
+        }
+
+        function updateDhikrCount() {
+            const countEl = document.querySelector('.dhikr-count');
+            if (countEl) {
+                countEl.textContent = dhikrCount;
+                countEl.classList.add('pulse');
+                setTimeout(() => {
+                    countEl.classList.remove('pulse');
+                }, 500);
+                
+                localStorage.setItem('dhikrCount', dhikrCount);
+                progress.dhikr = Math.min(100, Math.floor((dhikrCount % 1000) / 10));
+                localStorage.setItem('progress', JSON.stringify(progress));
+            }
+        }
+
+        function renderHadith() {
+            let filteredHadiths = allHadiths;
+            
+            if (searchQuery) {
+                filteredHadiths = allHadiths.filter(hadith => 
+                    hadith.arabic.includes(searchQuery) || 
+                    hadith.kurdish.includes(searchQuery) ||
+                    hadith.source.includes(searchQuery) ||
+                    hadith.category.includes(searchQuery)
+                );
+            }
+            
+            contentEl.innerHTML = `
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-quote-right"></i>
+                        فەرموودەکانی پێغەمبەر محمد (ص)
+                        <span style="font-size: 0.9rem; color: var(--gray); margin-right: auto;">(${filteredHadiths.length} فەرموودە)</span>
+                    </div>
+                    <div class="hadith-list">
+                        ${filteredHadiths.slice(0, 20).map(hadith => `
+                            <div class="hadith-item">
+                                <div class="hadith-text-arabic">${hadith.arabic}</div>
+                                <div class="hadith-text">${hadith.kurdish}</div>
+                                <div class="hadith-source">
+                                    <div>
+                                        <i class="fas fa-book"></i> ${hadith.source}
+                                        <span style="margin-right: 10px; padding: 3px 8px; background-color: var(--primary-light); border-radius: 4px; font-size: 0.8rem;">
+                                            ${hadith.category}
+                                        </span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                                        <span style="color: var(--gray); font-size: 0.9rem;">
+                                            #${hadith.id}
+                                        </span>
+                                        <span style="color: ${hadith.rating === 'سەحیح' ? 'var(--success)' : 'var(--warning)'}; font-size: 0.9rem;">
+                                            ${hadith.rating}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${filteredHadiths.length > 20 ? `
+                        <div style="text-align: center; margin-top: 20px; padding: 15px; background-color: var(--light-gray); border-radius: 12px;">
+                            <p>نیشاندراوی ${20} لە ${filteredHadiths.length} فەرموودە</p>
+                            <button id="loadMoreHadiths" style="background-color: var(--primary); color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; margin-top: 10px; transition: var(--transition);">
+                                بینینی زیاتر
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-filter"></i>
+                        فلتەرکردنی فەرموودەکان
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-hadith-filter="all">هەموو</button>
+                        <button class="filter-btn" data-hadith-filter="faith">ئیمان</button>
+                        <button class="filter-btn" data-hadith-filter="prayer">نوێژ</button>
+                        <button class="filter-btn" data-hadith-filter="morality">ڕەوشت</button>
+                        <button class="filter-btn" data-hadith-filter="sahih">سەحیح</button>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-book"></i>
+                        زانیاری دەربارەی فەرموودە
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">فەرموودە چییە؟</h4>
+                            <p>فەرموودەکان وتە، کردەوە، یان پەسەندکردنەکانی پێغەمبەر محمد (ص)ن کە دووەم سەرچاوەی ئیسلامن دوای قورئانی پیرۆز.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">پێوانەی فەرموودە</h4>
+                            <p>هەر فەرموودەیەک ڕێزبەندی جیاوازی هەیە لە ڕووی ڕاستەقینەییەوە: سەحیح (ڕاستەقینە)، حەسان (باش)، ضعیف (لاواز).</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">کتێبەکانی فەرموودە</h4>
+                            <p>هەشت کتێبی سەرەکی فەرموودە هەیە: شەش کتێبی سەحیحەکان (بەخاری، موسلیم...) و دوو کتێبی سوننەتەکان.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const loadMoreBtn = document.getElementById('loadMoreHadiths');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', () => {
+                    showNotification("لەم وەشانتەدا تەنها ٢٠ فەرموودە نیشاندراوە. لە وەشانتی تەواودا هەموو ٢٠٠ فەرموودەکە دەردەخرێن.", "info");
+                });
+            }
+        }
+
+        function renderPrayer() {
+            contentEl.innerHTML = `
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-pray"></i>
+                        فێرکاری نوێژ
+                    </div>
+                    <div class="prayer-steps">
+                        ${prayerSteps.map((step, index) => `
+                            <div class="step">
+                                <div class="step-number">${index + 1}</div>
+                                <div class="step-text">${step}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-water"></i>
+                        فێرکاری ووزو
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="text-align: center; padding: 20px; background-color: var(--light-gray); border-radius: 12px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">١</div>
+                            <div>نیەت</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background-color: var(--light-gray); border-radius: 12px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">٢</div>
+                            <div>دەستەکان</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background-color: var(--light-gray); border-radius: 12px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">٣</div>
+                            <div>دەم و لووت</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background-color: var(--light-gray); border-radius: 12px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">٤</div>
+                            <div>قۆڵەکان</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background-color: var(--light-gray); border-radius: 12px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">٥</div>
+                            <div>سەر و گوێ</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background-color: var(--light-gray); border-radius: 12px;">
+                            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">٦</div>
+                            <div>پێەکان</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-check-circle"></i>
+                        مەرجەکانی نوێژ
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div style="background-color: var(--light-gray); padding: 20px; border-radius: 12px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">پاکی</h4>
+                            <ul style="padding-right: 20px;">
+                                <li>پاکی لە حەدەس (ئەستنجا)</li>
+                                <li>پاکی لە حەدەسی ئەکبەر (غەسل)</li>
+                                <li>پاکی لە نەجاست (شوێنە پیسەکان)</li>
+                            </ul>
+                        </div>
+                        <div style="background-color: var(--light-gray); padding: 20px; border-radius: 12px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">پۆشاک</h4>
+                            <ul style="padding-right: 20px;">
+                                <li>پۆشینی عەورەت (پارتێکی لەش)</li>
+                                <li>جلی پاک (لە شوێنی پیس سەلامەت)</li>
+                            </ul>
+                        </div>
+                        <div style="background-color: var(--light-gray); padding: 20px; border-radius: 12px;">
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">شوێن و کات</h4>
+                            <ul style="padding-right: 20px;">
+                                <li>ئەگەڕانەوە بۆ قیبلە (کەعبە)</li>
+                                <li>زانینی کاتی نوێژ</li>
+                                <li>نیەت کردن بۆ نوێژ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-star"></i>
+                        سوودەکانی نوێژ
+                    </div>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        نوێژ پەیوەندی ڕاستەوخۆیە لەگەڵ خودا، دڵ پاک دەکات، گوناهەکان دەشۆرێتەوە، 
+                        ڕێزی مرۆڤی پارێزەرە، کەسایەتی ڕەوشتپەروەر دروست دەکات، 
+                        و لە ژیانی ڕۆژانەدا یارمەتیدەرە بۆ پشتگوێخستنی خەم و غەم و ناڕەحەتی.
+                    </p>
+                </div>
+            `;
+        }
+
+        function renderNewFeatures() {
+            contentEl.innerHTML = `
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-gift"></i>
+                        نوێکاریەکانی وەشانت 2.0
+                    </div>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                        ئەم وەشانتەی بەرنامەی ئیسلامی چەندین تایبەتمەندی نوێی هەیە:
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%); padding: 25px; border-radius: 16px; border-right: 5px solid var(--secondary);">
+                            <h3 style="color: var(--secondary); margin-bottom: 15px;">
+                                <i class="fas fa-book-quran"></i> تەواوی قورئان
+                            </h3>
+                            <ul style="padding-right: 20px;">
+                                <li style="margin-bottom: 8px;">١١٤ سورەتی قورئان</li>
+                                <li style="margin-bottom: 8px;">ناوی عەرەبی و کوردی</li>
+                                <li style="margin-bottom: 8px;">ژمارەی ئایەتەکان</li>
+                                <li style="margin-bottom: 8px;">جۆری سورەت (مەککی/مەدەنی)</li>
+                                <li style="margin-bottom: 8px;">واتای ناوی سورەتەکان</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%); padding: 25px; border-radius: 16px; border-right: 5px solid var(--primary);">
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-quote-left"></i> ٢٠٠ فەرموودە
+                            </h3>
+                            <ul style="padding-right: 20px;">
+                                <li style="margin-bottom: 8px;">٢٠٠ فەرموودەی پێغەمبەر (ص)</li>
+                                <li style="margin-bottom: 8px;">هەردوو زمانەی عەرەبی و کوردی</li>
+                                <li style="margin-bottom: 8px;">سەرچاوەی فەرموودە (بەخاری، موسلیم...)</li>
+                                <li style="margin-bottom: 8px;">ژمارەکردن و ڕێکخستن</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%); padding: 25px; border-radius: 16px; border-right: 5px solid #3b82f6;">
+                            <h3 style="color: #3b82f6; margin-bottom: 15px;">
+                                <i class="fas fa-search"></i> گەڕان و فلتەر
+                            </h3>
+                            <ul style="padding-right: 20px;">
+                                <li style="margin-bottom: 8px;">گەڕان لە نێوان سورەتەکاندا</li>
+                                <li style="margin-bottom: 8px;">گەڕان لە نێوان فەرموودەکاندا</li>
+                                <li style="margin-bottom: 8px;">فلتەرکردنی سورەتەکان بەپێی جۆر</li>
+                                <li style="margin-bottom: 8px;">ڕێکخستنی ڕوون و ئاسان</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-mobile-alt"></i>
+                        تایبەتمەندییەکانی مۆبایل
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">پەنجەرەی تاریک</h4>
+                            <p>پەنجەرەی تاریک و ڕووناک بۆ باشتر بینین لە شەودا</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">ئاگادارکردنەوە</h4>
+                            <p>ئاگادارکردنەوە بۆ کاتی بانگ و ئامۆژگاریەکان</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">نیشاندارکردن</h4>
+                            <p>نیشاندارکردنی سورەت و ئایەتەکان بۆ خوێندنەوەی دواتر</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSettings() {
+            contentEl.innerHTML = `
+                <div class="card fade-in">
+                    <div class="card-title">
+                        <i class="fas fa-cog"></i>
+                        ڕێکخستنەکان
+                    </div>
+                    
+                    <div class="settings-option">
+                        <span>دەنگی ئاگادارکردنەوە</span>
+                        <label class="switch">
+                            <input type="checkbox" id="notificationSoundSetting" ${localStorage.getItem('notificationSound') === 'true' ? 'checked' : ''}>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <span>ئاگادارکردنەوەی بانگ</span>
+                        <label class="switch">
+                            <input type="checkbox" id="prayerNotificationsSetting" ${localStorage.getItem('prayerNotifications') === 'true' ? 'checked' : ''}>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <span>فۆنتی گەورە</span>
+                        <label class="switch">
+                            <input type="checkbox" id="largeFontSetting" ${localStorage.getItem('largeFont') === 'true' ? 'checked' : ''}>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <span>زمان</span>
+                        <select id="languageSelectSetting" style="padding: 5px 10px; border-radius: 8px; background-color: var(--light-gray); color: var(--text); border: 1px solid var(--gray);">
+                            <option value="ku" ${localStorage.getItem('language') === 'ku' ? 'selected' : ''}>کوردی</option>
+                            <option value="ar" ${localStorage.getItem('language') === 'ar' ? 'selected' : ''}>عەرەبی</option>
+                        </select>
+                    </div>
+                    
+                    <div class="settings-option">
+                        <span>ڕەنگەکان</span>
+                        <div style="display: flex; gap: 10px;">
+                            <div class="color-option" data-color="green" style="width: 30px; height: 30px; background-color: #059669; border-radius: 50%; cursor: pointer; border: ${localStorage.getItem('themeColor') === 'green' ? '3px solid var(--primary)' : 'none'}"></div>
+                            <div class="color-option" data-color="blue" style="width: 30px; height: 30px; background-color: #3b82f6; border-radius: 50%; cursor: pointer; border: ${localStorage.getItem('themeColor') === 'blue' ? '3px solid var(--primary)' : 'none'}"></div>
+                            <div class="color-option" data-color="purple" style="width: 30px; height: 30px; background-color: #7c3aed; border-radius: 50%; cursor: pointer; border: ${localStorage.getItem('themeColor') === 'purple' ? '3px solid var(--primary)' : 'none'}"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background-color: var(--light-gray); border-radius: 12px;">
+                        <h4 style="color: var(--primary); margin-bottom: 15px;">داتاکانی بەرنامە</h4>
+                        <button id="exportData" style="background-color: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-right: 10px;">
+                            <i class="fas fa-download"></i> هەڵگرتن
+                        </button>
+                        <button id="importData" style="background-color: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">
+                            <i class="fas fa-upload"></i> بارکردن
+                        </button>
+                        <button id="resetData" style="background-color: var(--danger); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-right: 10px; margin-top: 10px;">
+                            <i class="fas fa-trash"></i> سڕینەوەی هەموو داتاکان
+                        </button>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--light-gray);">
+                        <h4>زانیاری بەرنامە</h4>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--gray);">
+                            وەشان: 2.0.0<br>
+                            دروستکەر: بەرنامەی ئیسلامی<br>
+                            مافی لەبەرگرتنەوە: 2024<br>
+                            پەیوەندی: islamicapp@example.com
+                        </p>
+                    </div>
+                </div>
+            `;
+
+            // کارکردنی ڕێکخستنەکان
+            document.getElementById('notificationSoundSetting').addEventListener('change', function() {
+                localStorage.setItem('notificationSound', this.checked);
+                showNotification("دەنگی ئاگادارکردنەوە " + (this.checked ? "چالاک کرا" : "ناچالاک کرا"), "info");
+            });
+
+            document.getElementById('prayerNotificationsSetting').addEventListener('change', function() {
+                localStorage.setItem('prayerNotifications', this.checked);
+                showNotification("ئاگادارکردنەوەی بانگ " + (this.checked ? "چالاک کرا" : "ناچالاک کرا"), "info");
+            });
+
+            document.getElementById('largeFontSetting').addEventListener('change', function() {
+                localStorage.setItem('largeFont', this.checked);
+                document.body.style.fontSize = this.checked ? '18px' : '16px';
+                showNotification("فۆنتی گەورە " + (this.checked ? "چالاک کرا" : "ناچالاک کرا"), "info");
+            });
+
+            document.getElementById('languageSelectSetting').addEventListener('change', function() {
+                localStorage.setItem('language', this.value);
+                showNotification("زمان گۆڕدرا بۆ " + (this.value === 'ku' ? 'کوردی' : 'عەرەبی'), "info");
+            });
+
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const color = this.getAttribute('data-color');
+                    localStorage.setItem('themeColor', color);
+                    applyThemeColor(color);
+                    showNotification("ڕەنگی پەنجەرە گۆڕدرا", "info");
+                    renderContent(); // نوێکردنەوەی پەنجەرە بۆ بینینی گۆڕانەکە
+                });
+            });
+
+            document.getElementById('exportData').addEventListener('click', exportData);
+            document.getElementById('importData').addEventListener('click', importData);
+            document.getElementById('resetData').addEventListener('click', resetData);
+        }
+
+        function applyThemeColor(color) {
+            const root = document.documentElement;
+            switch(color) {
+                case 'green':
+                    root.style.setProperty('--primary', '#059669');
+                    root.style.setProperty('--primary-dark', '#047857');
+                    break;
+                case 'blue':
+                    root.style.setProperty('--primary', '#3b82f6');
+                    root.style.setProperty('--primary-dark', '#2563eb');
+                    break;
+                case 'purple':
+                    root.style.setProperty('--primary', '#7c3aed');
+                    root.style.setProperty('--primary-dark', '#5b21b6');
+                    break;
+            }
+        }
+
+        function exportData() {
+            const data = {
+                dhikrCount: dhikrCount,
+                bookmarkedSurahs: [...bookmarkedSurahs],
+                progress: progress,
+                settings: {
+                    darkMode: darkMode,
+                    notificationSound: localStorage.getItem('notificationSound') === 'true',
+                    prayerNotifications: localStorage.getItem('prayerNotifications') === 'true',
+                    largeFont: localStorage.getItem('largeFont') === 'true',
+                    language: localStorage.getItem('language') || 'ku',
+                    themeColor: localStorage.getItem('themeColor') || 'green'
+                }
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'islamic_app_data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showNotification("داتاکانت هەڵگیرا", "success");
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    try {
+                        const data = JSON.parse(event.target.result);
+                        
+                        if (data.dhikrCount !== undefined) dhikrCount = data.dhikrCount;
+                        if (data.bookmarkedSurahs) bookmarkedSurahs = new Set(data.bookmarkedSurahs);
+                        if (data.progress) progress = data.progress;
+                        
+                        if (data.settings) {
+                            if (data.settings.darkMode !== undefined) {
+                                darkMode = data.settings.darkMode;
+                                if (darkMode) {
+                                    document.body.classList.add('dark-mode');
+                                    themeToggleEl.innerHTML = '<i class="fas fa-sun"></i>';
+                                    themeToggleEl.style.backgroundColor = 'var(--secondary)';
+                                }
+                            }
+                            
+                            localStorage.setItem('notificationSound', data.settings.notificationSound);
+                            localStorage.setItem('prayerNotifications', data.settings.prayerNotifications);
+                            localStorage.setItem('largeFont', data.settings.largeFont);
+                            localStorage.setItem('language', data.settings.language);
+                            localStorage.setItem('themeColor', data.settings.themeColor);
+                            
+                            applyThemeColor(data.settings.themeColor);
+                        }
+                        
+                        showNotification("داتاکانت بارکرا", "success");
+                        renderContent();
+                    } catch (error) {
+                        showNotification("هەڵە لە بارکردنی داتاکان", "error");
+                    }
+                };
+                
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+
+        function resetData() {
+            if (confirm("ئایا دڵنیای کە دەتەوێت هەموو داتاکان بسڕیتەوە؟")) {
+                dhikrCount = 0;
+                bookmarkedSurahs = new Set([1, 36, 55, 67, 112]);
+                progress = { quran: 15, hadith: 40, dhikr: 75 };
+                
+                localStorage.removeItem('dhikrCount');
+                localStorage.removeItem('bookmarkedSurahs');
+                localStorage.removeItem('progress');
+                localStorage.removeItem('notificationSound');
+                localStorage.removeItem('prayerNotifications');
+                localStorage.removeItem('largeFont');
+                localStorage.removeItem('language');
+                localStorage.removeItem('themeColor');
+                
+                darkMode = false;
+                document.body.classList.remove('dark-mode');
+                themeToggleEl.innerHTML = '<i class="fas fa-moon"></i>';
+                themeToggleEl.style.backgroundColor = 'var(--primary)';
+                
+                applyThemeColor('green');
+                
+                showNotification("هەموو داتاکانت سڕدرایەوە", "success");
+                renderContent();
+            }
+        }
+
+        function showNotification(message, type = "info", duration = 2000) {
+            Toastify({
+                text: message,
+                duration: duration,
+                gravity: "top",
+                position: "right",
+                backgroundColor: type === "success" ? "var(--success)" : 
+                               type === "error" ? "var(--danger)" : 
+                               type === "warning" ? "var(--warning)" : 
+                               "var(--primary)",
+                stopOnFocus: true,
+            }).showToast();
+        }
+
+        // زیادکردنی کارکردنی تەبەکان
+        tabEls.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabEls.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                activeTab = tab.getAttribute('data-tab');
+                renderContent();
+                
+                // دوگمەی کرداری سەرەڕای سوڕاو دەنوێنین
+                if (activeTab === 'quran' || activeTab === 'hadith' || activeTab === 'dhikr') {
+                    fab.style.display = 'flex';
+                } else {
+                    fab.style.display = 'none';
+                }
+            });
+        });
+
+        // کارکردنی دوگمەی کرداری سەرەڕای سوڕاو
+        fab.addEventListener('click', () => {
+            if (activeTab === 'quran') {
+                showNotification("گەڕان بۆ سورەتەکان", "info");
+                searchInput.focus();
+            } else if (activeTab === 'hadith') {
+                showNotification("گەڕان بۆ فەرموودەکان", "info");
+                searchInput.focus();
+            } else if (activeTab === 'dhikr') {
+                dhikrCount += 10;
+                updateDhikrCount();
+                showNotification("١٠ زیکر زیادکرا", "success");
+            }
+        });
+
+        // کارکردنی پەنجەرەی تاریک/ڕووناک
+        themeToggleEl.addEventListener('click', () => {
+            darkMode = !darkMode;
+            
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                themeToggleEl.innerHTML = '<i class="fas fa-sun"></i>';
+                themeToggleEl.style.backgroundColor = 'var(--secondary)';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggleEl.innerHTML = '<i class="fas fa-moon"></i>';
+                themeToggleEl.style.backgroundColor = 'var(--primary)';
+            }
+            
+            localStorage.setItem('darkMode', darkMode);
+        });
+
+        // گەڕان
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderContent();
+        });
+
+        // فلتەرەکان بۆ قورئان
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.getAttribute('data-filter');
+                renderContent();
+            });
+        });
+
+        // کارکردنی پەنجەرەی ڕێکخستنەکان
+        document.querySelector('[data-tab="settings"]').addEventListener('click', () => {
+            settingsPanel.style.display = 'block';
+        });
+
+        closeSettings.addEventListener('click', () => {
+            settingsPanel.style.display = 'none';
+        });
+
+        // داخستنی پەنجەرەی ڕێکخستنەکان لە کلیک لە دەرەوەییدا
+        window.addEventListener('click', (e) => {
+            if (e.target === settingsPanel) {
+                settingsPanel.style.display = 'none';
+            }
+        });
+
+        // تێکردنی دۆخەکان لە کاتی بارکردن
+        function loadSettings() {
+            const savedTheme = localStorage.getItem('darkMode');
+            const savedDhikr = localStorage.getItem('dhikrCount');
+            const savedBookmarks = localStorage.getItem('bookmarkedSurahs');
+            const savedProgress = localStorage.getItem('progress');
+            const savedThemeColor = localStorage.getItem('themeColor');
+            
+            if (savedTheme !== null) {
+                darkMode = savedTheme === 'true';
+                if (darkMode) {
+                    document.body.classList.add('dark-mode');
+                    themeToggleEl.innerHTML = '<i class="fas fa-sun"></i>';
+                    themeToggleEl.style.backgroundColor = 'var(--secondary)';
+                }
+            }
+            
+            if (savedDhikr !== null) {
+                dhikrCount = parseInt(savedDhikr);
+            }
+            
+            if (savedBookmarks !== null) {
+                bookmarkedSurahs = new Set(JSON.parse(savedBookmarks));
+            }
+            
+            if (savedProgress !== null) {
+                progress = JSON.parse(savedProgress);
+            }
+            
+            if (savedThemeColor) {
+                applyThemeColor(savedThemeColor);
+            }
+            
+            if (localStorage.getItem('largeFont') === 'true') {
+                document.body.style.fontSize = '18px';
+            }
+        }
+
+        // زیادکردنی کاتی ڕاستەقینە
+        function updateRealTime() {
+            if (activeTab === 'home') {
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
+                const timeEl = document.querySelector('.time');
+                
+                if (timeEl) {
+                    timeEl.textContent = timeStr;
+                }
+                
+                // ئاگادارکردنەوە بۆ کاتی بانگ
+                if (localStorage.getItem('prayerNotifications') === 'true') {
+                    checkPrayerTime(now);
+                }
+            }
+        }
+
+        function checkPrayerTime(now) {
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            
+            for (let prayer of prayerTimes) {
+                const [hours, minutes] = prayer.time.split(':');
+                const prayerTime = parseInt(hours) * 60 + parseInt(minutes);
+                
+                if (prayerTime - 5 === currentTime) {
+                    showNotification(`بانگی ${prayer.name} لە ٥ خولەکی دیکەدا دەست پێدەکات`, "info", 5000);
+                    if (localStorage.getItem('notificationSound') === 'true') {
+                        playNotificationSound();
+                    }
+                }
+            }
+        }
+
+        function playNotificationSound() {
+            // دەنگی ئاگادارکردنەوە
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 1);
+        }
+
+        // دەستپێکردنی بەرنامە
+        function init() {
+            loadSettings();
+            renderContent();
+            
+            // نوێکردنەوەی کات هەر چرکەیەک
+            setInterval(updateRealTime, 1000);
+            
+            // نوێکردنەوەی کاتی بانگ هەر خولەکێک
+            setInterval(() => {
+                if (activeTab === 'home') {
+                    const now = new Date();
+                    checkPrayerTime(now);
+                }
+            }, 60000);
+            
+            // زیادکردنی ئەنیمەیشن لە کاتی بارکردن
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        }
+
+        // دەستپێکردن کاتێک پەڕە بارکرا
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
+
+</body>
+</html>
